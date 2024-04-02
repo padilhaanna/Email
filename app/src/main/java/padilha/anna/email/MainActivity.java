@@ -2,11 +2,14 @@ package padilha.anna.email;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,18 +18,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnEnviar = findViewById(R.id.btnEnviar); //determina o botão "Enviar"
-        btnEnviar.setOnClickListener(new View.OnClickListener() { //configura o botão para determinar o que acontece quando alguém clicar nele
+        Button btnEnviar = findViewById(R.id.btnEnviar);
+        btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { //metodo para determinar oq o botao faz depois de clicar (classe: View, v: elemento que foi clicado
-                Button b = (Button) v; //operador de casting (transforma objeto do tipo View em um do tipo Button e guarda em b
-                EditText etEmail = findViewById(R.id.etEmail); //pega a caixa de texto
-                String emailDigitado = etEmail.getText().toString(); //pega o texto digitado nessa caixa
+            public void onClick(View v) {
+                Button b = (Button) v;
+                // Obtendo dados digitados pelo usuario
+                EditText etEmail = findViewById(R.id.etEmail);
+                String emailDigitado = etEmail.getText().toString();
 
-                Intent i = new Intent(MainActivity.this, NextActivity.class);//cria classe Intent (determina uma intenção)
-                i.putExtra("texto", emailDigitado); //chave "texto" associado a um valor textoDigitado
-                startActivity(i); //executa a intenção - passa para próxima página (i: guarda a intenção)
-            }
+                Intent i = new Intent(Intent.ACTION_SENDTO);
+
+                i.setData(Uri.parse("mailto:"));
+
+                String[] emails = new String[]{email};
+                i.putExtra(Intent.EXTRA_EMAIL, emails);
+                i.putExtra(Intent.EXTRA_SUBJECT, assunto);
+                i.putExtra(Intent.EXTRA_TEXT, texto);
+
+                try {
+                    startActivity(Intent.createChooser(i, "Escolha o APP"));
+                    }
+                catch (ActivityNotFoundException e) {
+                    Toast.makeText(MainActivity.this, "Não há nenhum app que posso realizar essa operação", Toast.LENGTH_LONG).show();
+                     }
+                 }
         });
     }
 }
