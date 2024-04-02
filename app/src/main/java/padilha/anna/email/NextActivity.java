@@ -13,10 +13,10 @@ public class NextActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_next);
 
-        Intent i = getIntent();//obtem Intent da primeira tela
+        //Intent i = getIntent();//obtem Intent da primeira tela
 
-        String textoDigitado = i.getStringExtra("texto");//pega o texto que foi digitado
-        TextView tvTexto = findViewById(R.id.tv_texto);//obtem  textview
-        tvTexto.setText(textoDigitado);//faz aparecer o texto digitado no tvtexto
+        //String textoDigitado = i.getStringExtra("texto");//pega o texto que foi digitado
+        //TextView tvTexto = findViewById(R.id.tv_texto);//obtem  textview
+        //tvTexto.setText(textoDigitado);//faz aparecer o texto digitado no tvtexto
     }
 }

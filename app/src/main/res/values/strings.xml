@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Email</string>
-    <string name="et_digiteaqui">Digite algo aqui...</string>
-    <string name="btn_enviar">Enviar</string>
+    <string name="etEmail">Email</string>
+    <string name="etAssunto">Assunto</string>
+    <string name="etTexto">Texto</string>
+    <string name="btnEnviar">Enviar</string>
 </resources>
