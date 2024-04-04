@@ -17,15 +17,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Button btnEnviar = (Button) findViewById(R.id.btnEnviar);
 
-        Button btnEnviar = findViewById(R.id.btnEnviar);
+        // Definicao da acao do click do botao
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Button b = (Button) v;
                 // Obtendo dados digitados pelo usuario
-                EditText etEmail = findViewById(R.id.etEmail);
-                String emailDigitado = etEmail.getText().toString();
+                EditText etEmail = (EditText) findViewById(R.id.etEmail);
+                String email = etEmail.getText().toString();
+
+                EditText etAssunto = (EditText) findViewById(R.id.etAssunto);
+                String assunto = etAssunto.getText().toString();
+
+                EditText etTexto = (EditText) findViewById(R.id.etTexto);
+                String texto = etTexto.getText().toString();
 
                 Intent i = new Intent(Intent.ACTION_SENDTO);
 
@@ -38,11 +44,11 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
                     startActivity(Intent.createChooser(i, "Escolha o APP"));
-                    }
+                }
                 catch (ActivityNotFoundException e) {
                     Toast.makeText(MainActivity.this, "Não há nenhum app que posso realizar essa operação", Toast.LENGTH_LONG).show();
-                     }
-                 }
+                }
+            }
         });
     }
 }
