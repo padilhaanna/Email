@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Email</string>
-    <string name="etEmail">Email</string>
-    <string name="etAssunto">Assunto</string>
-    <string name="etTexto">Texto</string>
-    <string name="btnEnviar">Enviar</string>
+    <string name="app_name">Email</string> \\criação do nome da app
+    <string name="etEmail">Email</string> \\criação da string email
+    <string name="etAssunto">Assunto</string> \\criação da string assunto
+    <string name="etTexto">Texto</string> \\criação da string texto
+    <string name="btnEnviar">Enviar</string> \\criação da string enviar
 </resources>
